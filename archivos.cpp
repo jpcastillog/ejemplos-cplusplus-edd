@@ -94,7 +94,11 @@ void writeEmpleadosBin(empleado emps[], int n, std::string out_path){
     if (!fout.is_open())
         cerr << "No se pudo abrir el archivo" << out_path << endl;
     fout.write((char*)&n, sizeof(int));
+    
+    /* Dos formas de escribir arreglos */
+    // Volcado directo
     // fout.write((char*)emps, n*sizeof(empleado));
+    // Escribir elemento a elemento
     for (int i = 0; i < n; ++i) {
         fout.write((char*)&emps[i], sizeof(empleado));      
     }
@@ -163,7 +167,7 @@ int main(){
     getline(fp, line2);
     cout << line1 << endl;
     cout << line2 << endl;
-    
+
     fp.close(); //Cerramos el archivo
 
     /* Arreglos en ASCII */
