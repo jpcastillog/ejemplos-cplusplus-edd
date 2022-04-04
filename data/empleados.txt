@@ -1,0 +1,5 @@
+4
+0 Pedro 500
+1 Juan 100.2
+2 Diego 200.43
+3 Maria 499
