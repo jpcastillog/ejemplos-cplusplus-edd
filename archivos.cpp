@@ -100,7 +100,7 @@ void writeEmpleadosBin(empleado emps[], int n, std::string out_path){
     // fout.write((char*)emps, n*sizeof(empleado));
     // Escribir elemento a elemento
     for (int i = 0; i < n; ++i) {
-        fout.write((char*)&emps[i], sizeof(empleado));      
+        fout.write((char*) &emps[i], sizeof(empleado));      
     }
     fout.close();
     return;
@@ -171,18 +171,25 @@ int main(){
     fp.close(); //Cerramos el archivo
 
     /* Arreglos en ASCII */
+    cout << "*** Conjuntos leidos desde enteros.txt ***" << endl;
     ifstream in;
     int n_sets;
     in.open("./data/enteros.txt");
     in >> n_sets;
+    int** sets = new int*[n_sets]; //Arreglo dinamico 2D para almacenar los conjuntos
+    int* sizes = new int[n_sets]; //Arreglo para almacenar los tamaños de los conjuntos
     for (int i = 0; i < n_sets; ++i) {
         int n_ints;
         in >> n_ints;
+        sizes[i] = n_ints;
+        int* set = new int[n_ints];
         for (int j = 0; j < n_ints; ++j) {
             int e;
             in >> e;
+            set[j] = e;
             cout << e << " ";
         }
+        sets[i] = set;
         cout << endl;
     }
     in.close();
@@ -190,6 +197,13 @@ int main(){
     /* Arreglos en Archivos Binarios */
     // implementar en clases ...
 
+
+    // Liberamos la memoria
+    for (int i = 0; i < n_sets; i++) {
+        delete[] sets[i];
+    }
+    delete[] sets;
+    delete[] sizes;
 
     // Structs
     const int num_empleados = 4;
