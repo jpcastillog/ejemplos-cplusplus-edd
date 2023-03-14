@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-
+// Si esta compilando con clang (macos)
+// agregue el flag -std=c++11
 using namespace std;
 
 /*
@@ -45,7 +46,7 @@ int main() {
     // struct de tipo alumno
     alumno a; // declaranción
     a = {"Sansano", 202073531, 54.5, 'm', {1, 1, 2001}}; // instanciación
-    
+    cout << "Size of alumno: "<< sizeof(alumno) << endl;
     /* Podemos acceder a los campos de un struct
        con el operador ".nombre_campo"
     */
