@@ -30,7 +30,7 @@ void printValue(int x) {
 (se copian los parámetros reales a los formales), exceptuando los arreglos.
 * Para pasar por referencia debemos agregar un & antes del nombre del parámetro.
 */
-// Ej.                          r es pasado por referencia.
+// Ej. r es pasado por referencia.
 void referenceAdd(int x, int y, int &r) {
     r = x + y;
 }

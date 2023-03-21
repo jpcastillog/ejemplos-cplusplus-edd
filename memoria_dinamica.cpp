@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <time.h> // Solo la utilizaremos para generar un numero random
 using namespace std;
 
 struct empleado {
@@ -17,6 +17,16 @@ int* createArray(int n) {
     return arr;
 }
 
+int* createRandomArray(int &n) {
+    n = rand()%1000+1; // Número entre 1 y 1000.
+    int* arr = new int[n];
+    // int arr[n]; No puedo hacer esto!!! (n se define en tiempo de ejecución)
+    for (int i=0; i<n; ++i){
+        arr[i] = 0;
+    }
+    return arr;
+}
+
 /* Para administrar la memoria dinámica (heap) se
 utilizan los operadores: 
 * new: pedir memoria -> retorna un puntero
@@ -25,7 +35,8 @@ usamos delete[] para liberar arreglos
 */
 
 int main() {
-    int *p = new int; //pedimos memoria del heap para un int
+    int *p;
+    p = new int; //pedimos memoria del heap para un int
     *p = 10; // le asignamos un valor
     cout << "El entero pedido mediante new: " << *p << endl; 
     delete p; /* cada new debe ir con su respectivo delete para
@@ -56,6 +67,7 @@ int main() {
     /* Liberar memoria de un puntero que apunta a NULL
     no arroja error, IMPORTANTE MANTENER LAS REFERENCIAS! */ 
     p = NULL;
+
     delete p;
     return 0;
 }
